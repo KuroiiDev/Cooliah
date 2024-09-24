@@ -1,6 +1,11 @@
 <?php 
 session_start();
-include '../connection.php';
+
+if (isset($_SESSION['id'])){
+    header('Location: /cool-iah');
+    exit; 
+}
+include '../config/connection.php';
 
 if (isset($_POST['submit'])){
 
@@ -16,7 +21,6 @@ if (isset($_POST['submit'])){
 
         $_SESSION['name'] = $row['name'];
         $_SESSION['id'] = $row['id'];
-        $_SESSION['logged'] = true;
         header('Location: /cool-iah');
     } else {
         echo "Invalid username or password";
