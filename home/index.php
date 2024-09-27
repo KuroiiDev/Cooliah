@@ -10,12 +10,21 @@
 </head>
 
 <?php 
-
+$name = "-";
 session_start();
 
 if (!(isset($_SESSION['id']))){
     header("Location: /cooliah/login");
     exit();
+}
+
+include '../config/connection.php';
+
+$query = "SELECT * FROM users WHERE id = '".$_SESSION['id']."'";
+$result = mysqli_query($conn, $query);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $name = $row['name'];
 }
 
 ?>
@@ -39,14 +48,14 @@ if (!(isset($_SESSION['id']))){
                 </li>
             </ul>
             <div class="form-inline my-2 my-lg-0">
-                <h6 class="mx-2"><?php echo $_SESSION['name'];?></h6>
+                <a href="../account"><h6 class="mx-2"><?php echo $name;?></h6></a>
                 <a href="../logout.php" class="btn btn-outline-danger my-2 my-sm-0">Logout</a>
         </div>
     </nav>
     <div class="jumbotron">
         <h1 class="display-4"></h1>
-        <h1 class="display-4"><span style="color: #000;">Welcome to Cooliah</span> 
-        <span style="color: #007bff;"><?php echo $_SESSION['name'];?></span>!</h1>
+        <h1 class="display-4"><span style="color: #000;">Welcome to Cooliah,</span> 
+        <span style="color: #007bff;"><?php echo $name;?></span>!</h1>
         <p class="lead">Explore our collection of products just for you!</p>
         <hr class="my-4">
         <p>Check out our featured products below:</p>
