@@ -18,7 +18,7 @@
 session_start();
 
 if (isset($_SESSION['id'])) {
-    header('Location: /cool-iah');
+    header('Location: /cooliah');
     exit;
 }
 include '../config/connection.php';
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['name'] = $row['name'];
         $_SESSION['id'] = $row['id'];
-        header('Location: /cool-iah');
+        header('Location: /cooliah');
     } else {
         echo "Invalid username or password";
     }
