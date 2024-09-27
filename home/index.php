@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link active" aria-current="page" href="../home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
@@ -54,8 +54,9 @@ if ($result->num_rows > 0) {
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <a href="../account">
-                        <h6 class="mx-2"><?php echo $name; ?></h6>
+                    <a href="../account" class="p-2">
+                        <i class="fas fa-user"></i>
+                        <?php echo $name; ?>
                     </a>
                     <a href="../logout.php" class="btn btn-outline-danger my-2 my-sm-0">Logout</a>
                 </form>
