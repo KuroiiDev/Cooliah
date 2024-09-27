@@ -12,7 +12,24 @@
     <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 
+<?php 
+include "../config/connection.php";
 
+if(isset($_POST['submit'])) {
+    $user = $_POST['user'];
+    $name = $_POST['name'];
+    $pass = $_POST['pass'];
+
+    $query = "INSERT INTO users (username, name, password, roles) VALUES ('$user', '$name', '$pass', 'user')";
+    $result = mysqli_query($conn, $query);
+    
+    if($result) {
+        echo "Registration successful";
+    } else {
+        echo "Error: ". mysqli_error($conn);
+    }
+}
+?>
 <body>
 <div class="background"></div>
 <div class="container">

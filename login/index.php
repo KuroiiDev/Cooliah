@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     $user = $_POST['user'];
     $pass = $_POST['pass'];
 
-    $query = "SELECT * FROM accounts WHERE username  = '$user' AND password = '$pass'";
+    $query = "SELECT * FROM users WHERE username  = '$user' AND password = '$pass'";
     $result = mysqli_query($conn, $query);
 
     if ($result->num_rows > 0) {
