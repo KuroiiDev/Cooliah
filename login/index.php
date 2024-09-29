@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 
@@ -39,14 +39,21 @@ if (isset($_POST['submit'])) {
         $_SESSION['id'] = $row['id'];
         header('Location: /cooliah');
     } else {
-        echo "Invalid username or password";
+        echo '
+        <script>
+            document.getElementById("error-message").style.display = "block";
+            document.getElementById("error-message").style.animation = "fadeIn 1s"; 
+            document.getElementById("error-message").innerHTML = "Incorrect username or password";
+            return false;
+        </script>
+        ';
     }
 }
 
 ?>
 
 <body>
-<div class="background"></div>
+    <div class="background"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -58,10 +65,14 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter password" name="pass">
+                        <input type="password" class="form-control" id="password" placeholder="Enter password"
+                            name="pass">
                     </div>
                     <div class="text-center">
-                        <input type="submit" name="submit" class="btn btn-primary" value="Login"/>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                    </div>
+                    <div id="error-message" class="alert alert-danger" style="display: none;">
+                        Incorrect username or password!
                     </div>
                 </form>
                 <p class="text-center">Don't have an account? <a href="../register">Register</a></p>
@@ -69,4 +80,5 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </body>
+
 </html>

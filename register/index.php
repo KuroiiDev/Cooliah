@@ -17,6 +17,7 @@ include "../config/connection.php";
 
 if(isset($_POST['submit'])) {
     $user = $_POST['user'];
+    $email = $_POST['email'];
     $name = $_POST['name'];
     $pass = $_POST['pass'];
 
@@ -40,6 +41,10 @@ if(isset($_POST['submit'])) {
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" class="form-control" id="username" placeholder="Enter username" name="user">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter E-Mail" name="email">
                     </div>
                     <div class="form-group">
                         <label for="name">Name:</label>
