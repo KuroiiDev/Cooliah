@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/d70f5a4dbb.js" crossorigin="anonymous"></script>
 </head>
 
 <?php
@@ -64,7 +65,46 @@ if ($result->num_rows > 0) {
     </nav>
 
     <div class="container p-3">
-
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Account Information</h5>
+                        <p class="card-text">Username: <?php echo $row['username']; ?></p>
+                        <p class="card-text">Email: <?php echo $row['email']; ?></p>
+                        <p class="card-text">Name: <?php echo $row['name']; ?></p>
+                        <a href="#" class="btn btn-primary">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Order History</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Order Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <!-- <tbody>
+                                <?php foreach ($orders as $order) { ?>
+                                <tr>
+                                    <td><?php echo $order['id']; ?></td>
+                                    <td><?php echo $order['date']; ?></td>
+                                    <td><?php echo $order['total']; ?></td>
+                                    <td><?php echo $order['status']; ?></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
