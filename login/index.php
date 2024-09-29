@@ -39,17 +39,9 @@ if (isset($_POST['submit'])) {
         $_SESSION['id'] = $row['id'];
         header('Location: /cooliah');
     } else {
-        echo '
-        <script>
-            document.getElementById("error-message").style.display = "block";
-            document.getElementById("error-message").style.animation = "fadeIn 1s"; 
-            document.getElementById("error-message").innerHTML = "Incorrect username or password";
-            return false;
-        </script>
-        ';
+        $error = "Username and Password are Incorrect!";
     }
 }
-
 ?>
 
 <body>
@@ -71,9 +63,11 @@ if (isset($_POST['submit'])) {
                     <div class="text-center">
                         <input type="submit" name="submit" class="btn btn-primary" value="Login" />
                     </div>
-                    <div id="error-message" class="alert alert-danger" style="display: none;">
-                        Incorrect username or password!
-                    </div>
+                    <?php if (isset($error)) { ?>
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong><br> <?php echo $error; ?>
+                        </div>
+                    <?php } ?>
                 </form>
                 <p class="text-center">Don't have an account? <a href="../register">Register</a></p>
             </div>
